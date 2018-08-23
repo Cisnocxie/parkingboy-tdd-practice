@@ -1,6 +1,5 @@
 package com.example.parkingboytddpractice.controllers;
 
-import com.example.parkingboytddpractice.controllers.UserController;
 import com.example.parkingboytddpractice.entities.User;
 import com.example.parkingboytddpractice.services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(UserController.class)
 public class UserControllerTest {
     @MockBean
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     private MockMvc mvc;

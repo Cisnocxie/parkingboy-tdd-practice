@@ -13,18 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
     @Autowired
-    UserService userService;
+    private UserService userService;
 
-
-    //	@PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/users")
     public ResponseEntity createUser(@RequestBody User user) {
         String password = userService.createUser(user);
         if (password != null) {
-            return new ResponseEntity<>(password, HttpStatus.CREATED);
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.CREATED).body(password);
         }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
 
